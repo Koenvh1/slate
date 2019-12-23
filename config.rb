@@ -28,12 +28,6 @@ end
 
 activate :sprockets
 
-activate :autoprefixer do |config|
-  config.browsers = ['last 2 version', 'Firefox ESR']
-  config.cascade  = false
-  config.inline   = true
-end
-
 # Github pages require relative links
 activate :relative_assets
 set :relative_links, true
@@ -43,11 +37,18 @@ configure :build do
   activate :asset_hash
   # If you're having trouble with Middleman hanging, commenting
   # out the following two lines has been known to help
-  activate :minify_css
-  activate :minify_javascript
+  # activate :minify_css
+  # activate :minify_javascript
   # activate :relative_assets
   # activate :asset_hash
   # activate :gzip
+
+  
+  activate :autoprefixer do |config|
+    config.browsers = ['last 2 version', 'Firefox ESR']
+    config.cascade  = false
+    config.inline   = true
+  end
 end
 
 # Deploy Configuration
