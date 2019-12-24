@@ -1169,6 +1169,191 @@ musicFolderId | No | | Only return results from the music folder with the given 
 
 Identical to getStarred
 
+# Song lists
+
+## getNewaddedSongs
+
+> The XML structure looks like this:
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<subsonic-response status="ok" version="1.16.0" xmlns="http://subsonic.org/restapi">
+ <newaddedSongs>
+  <song id="3506333" parent="199918" title="Billy Joe's Dubstep Adventure" artist="Truxton" artistId="2237" album="ON Trax Vol. 7" albumId="199918" genre="" coverArt="31855" size="26394168" contentType="audio/x-flac" suffix="flac" duration="224" path="LAPFOX TRAX/ON Trax Vol. 7/Truxton - ON Trax Vol. 7 - 11 Billy Joe's Dubstep Adventure.flac" type="music" isDir="false" bitRate="939" created="2019-12-24T00:46:16" year="2014" track="11"/>
+ </newaddedSongs>
+</subsonic-response>
+
+```
+
+> The JSON structure looks like this:
+
+```json
+{
+  "subsonic-response": {
+    "status": "ok",
+    "version": "1.16.0",
+    "newaddedSongs": {
+      "song": [
+        {
+          "id": "3506333",
+          "parent": "199918",
+          "title": "Billy Joe's Dubstep Adventure",
+          "artist": "Truxton",
+          "artistId": "2237",
+          "album": "ON Trax Vol. 7",
+          "albumId": "199918",
+          "genre": "",
+          "coverArt": "31855",
+          "size": "26394168",
+          "contentType": "audio/x-flac",
+          "suffix": "flac",
+          "duration": 224,
+          "path": "LAPFOX TRAX/ON Trax Vol. 7/Truxton - ON Trax Vol. 7 - 11 Billy Joe's Dubstep Adventure.flac",
+          "type": "music",
+          "isDir": false,
+          "bitRate": 939,
+          "created": "2019-12-24T00:45:46",
+          "year": 2014,
+          "track": 11
+        },
+        ...
+      ]
+    }
+  }
+}
+```
+Returns new added songs. 
+
+### Query Parameters
+
+Parameter | Required | Default | Comment
+--------- | -------- | ------- | -------
+count | No | 20 | The maximum number of songs to return. Max 500.
+offset | No | 0 | The offset. Useful if you want to page through the songs.
+
+## getLastplayedSongs
+
+> The XML structure looks like this:
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<subsonic-response status="ok" version="1.16.0" xmlns="http://subsonic.org/restapi">
+ <lastplayedSongs>
+  <song id="3506333" parent="199918" title="Billy Joe's Dubstep Adventure" artist="Truxton" artistId="2237" album="ON Trax Vol. 7" albumId="199918" genre="" coverArt="31855" size="26394168" contentType="audio/x-flac" suffix="flac" duration="224" path="LAPFOX TRAX/ON Trax Vol. 7/Truxton - ON Trax Vol. 7 - 11 Billy Joe's Dubstep Adventure.flac" type="music" isDir="false" bitRate="939" created="2019-12-24T00:46:16" year="2014" track="11"/>
+ </lastplayedSongs>
+</subsonic-response>
+
+```
+
+> The JSON structure looks like this:
+
+```json
+{
+  "subsonic-response": {
+    "status": "ok",
+    "version": "1.16.0",
+    "lastplayedSongs": {
+      "song": [
+        {
+          "id": "3506333",
+          "parent": "199918",
+          "title": "Billy Joe's Dubstep Adventure",
+          "artist": "Truxton",
+          "artistId": "2237",
+          "album": "ON Trax Vol. 7",
+          "albumId": "199918",
+          "genre": "",
+          "coverArt": "31855",
+          "size": "26394168",
+          "contentType": "audio/x-flac",
+          "suffix": "flac",
+          "duration": 224,
+          "path": "LAPFOX TRAX/ON Trax Vol. 7/Truxton - ON Trax Vol. 7 - 11 Billy Joe's Dubstep Adventure.flac",
+          "type": "music",
+          "isDir": false,
+          "bitRate": 939,
+          "created": "2019-12-24T00:45:46",
+          "year": 2014,
+          "track": 11
+        },
+        ...
+      ]
+    }
+  }
+}
+```
+Returns new added songs. 
+
+### Query Parameters
+
+Parameter | Required | Default | Comment
+--------- | -------- | ------- | -------
+count | No | 20 | The maximum number of songs to return. Max 500.
+offset | No | 0 | The offset. Useful if you want to page through the songs.
+
+## getMostplayedSongs
+
+> The XML structure looks like this:
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<subsonic-response status="ok" version="1.16.0" xmlns="http://subsonic.org/restapi">
+ <mostplayedSongs>
+  <song id="3506333" parent="199918" title="Billy Joe's Dubstep Adventure" artist="Truxton" artistId="2237" album="ON Trax Vol. 7" albumId="199918" genre="" coverArt="31855" size="26394168" contentType="audio/x-flac" suffix="flac" duration="224" path="LAPFOX TRAX/ON Trax Vol. 7/Truxton - ON Trax Vol. 7 - 11 Billy Joe's Dubstep Adventure.flac" type="music" isDir="false" bitRate="939" created="2019-12-24T00:46:16" year="2014" track="11"/>
+ </mostplayedSongs>
+</subsonic-response>
+
+```
+
+> The JSON structure looks like this:
+
+```json
+{
+  "subsonic-response": {
+    "status": "ok",
+    "version": "1.16.0",
+    "mostplayedSongs": {
+      "song": [
+        {
+          "id": "3506333",
+          "parent": "199918",
+          "title": "Billy Joe's Dubstep Adventure",
+          "artist": "Truxton",
+          "artistId": "2237",
+          "album": "ON Trax Vol. 7",
+          "albumId": "199918",
+          "genre": "",
+          "coverArt": "31855",
+          "size": "26394168",
+          "contentType": "audio/x-flac",
+          "suffix": "flac",
+          "duration": 224,
+          "path": "LAPFOX TRAX/ON Trax Vol. 7/Truxton - ON Trax Vol. 7 - 11 Billy Joe's Dubstep Adventure.flac",
+          "type": "music",
+          "isDir": false,
+          "bitRate": 939,
+          "created": "2019-12-24T00:45:46",
+          "year": 2014,
+          "track": 11
+        },
+        ...
+      ]
+    }
+  }
+}
+```
+Returns most played songs. 
+
+### Query Parameters
+
+Parameter | Required | Default | Comment
+--------- | -------- | ------- | -------
+count | No | 20 | The maximum number of songs to return. Max 500.
+offset | No | 0 | The offset. Useful if you want to page through the songs.
+
 # Searching
 
 ## search
