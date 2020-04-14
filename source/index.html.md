@@ -100,7 +100,7 @@ In the case of token authentication, the `password` has to be the token listed o
 }
 ```
 <aside class="notice">
-XML is the default format used by the Astiga API. It follows the <a href="http://www.subsonic.org/pages/inc/api/schema/subsonic-rest-api-1.16.0.xsd">Subsonic XSD</a>) schema for the most part, though there may be some alterations.
+XML is the default format used by the Astiga API. It follows the <a href="http://www.subsonic.org/pages/inc/api/schema/subsonic-rest-api-1.16.0.xsd">Subsonic XSD</a> schema for the most part, though there may be some alterations.
 </aside> 
 
 Every response is wrapped in a subsonic-response, which contains a status and version as children. In case status is not `ok`, but `failed`, it will contain an `error` with code and message. 
@@ -1168,6 +1168,62 @@ musicFolderId | No | | Only return results from the music folder with the given 
 ## getStarred2
 
 Identical to getStarred
+
+# Artist lists
+
+## getArtistList
+
+> The XML structure looks like this:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<subsonic-response status="ok" version="1.16.0" xmlns="http://subsonic.org/restapi">
+ <artistList>
+  <artist id="1861" name="RQ" coverArt="34654" songCount="7"/>
+  ...
+ </artistList>
+</subsonic-response>
+```
+
+> The JSON structure looks like this:
+
+```json
+{
+  "subsonic-response": {
+    "status": "ok",
+    "version": "1.16.0",
+    "artistList": {
+      "artist": [
+        {
+          "id": "1862",
+          "name": "RQ vs DARIUS vs EUGENE",
+          "coverArt": "34655",
+          "songCount": 1
+        },
+        ...
+      ]
+    }
+  }
+}
+```
+
+Returns a list of random, newest, highest rated etc. albums.
+
+### Query Parameters
+
+Parameter | Required | Default | Comment
+--------- | -------- | ------- | -------
+type | Yes | | The list type. Must be one of the following: `random`, `newest`, `highest`, `frequent`, `recent`, `alphabeticalByName`, `alphabeticalByArtist`, `starred`, `byYear`, `byGenre`.
+size | No | 10 | The number of albums to return. Max 500.
+offset | No | 0 | The list offset. Useful if you for example want to page through the list of newest albums.
+fromYear | Yes (if `type` is `byYear`) | | The first year in the range. If `fromYear > toYear` a reverse chronological list is returned.
+toYear | Yes (if `type` is `byYear`) | | The last year in the range. 
+genre | Yes (if `type` is `genre`) | | The name of the genre. 
+musicFolderId | No | | Only return albums in the music folder with the given ID. See `getMusicFolders`.
+
+## getArtistList2
+
+Identical to getArtistList
 
 # Song lists
 
